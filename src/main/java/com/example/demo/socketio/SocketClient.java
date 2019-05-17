@@ -3,8 +3,6 @@ package com.example.demo.socketio;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 
-import java.net.URISyntaxException;
-
 public class SocketClient {
     public static void main(String[] args) throws Exception {
 
