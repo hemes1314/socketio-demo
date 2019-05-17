@@ -6,29 +6,27 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
-import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class SocketServer {
+public abstract class SocketServer {
 
-    private static Map<String, UUID> requestType2SessionId = new ConcurrentHashMap<>();
+    protected static Map<String, UUID> requestType2SessionId = new ConcurrentHashMap<>();
 
-    private static SocketIOServer server;
+    protected abstract void setSocketIOServer(SocketIOServer server);
 
-    public static void main(String[] args) throws Exception {
-
-        new SocketServer().socketioInit(server);
-    }
-
-    public void socketioInit(SocketIOServer server0) throws Exception {
+    public void socketioInit() throws Exception {
         Configuration config = new Configuration();
         config.setHostname("localhost");
         config.setPort(7777);
 
         SocketIOServer server = new SocketIOServer(config);
+        setSocketIOServer(server);
 
         server.addConnectListener(new ConnectListener(){
             @Override
@@ -59,4 +57,13 @@ public class SocketServer {
         server.stop();
     }
 
+    public static void main(String[] args) throws Exception {
+
+        new SocketServer() {
+            @Override
+            protected void setSocketIOServer(SocketIOServer server) {
+                return;
+            }
+        }.socketioInit();
+    }
 }
