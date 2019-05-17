@@ -28,7 +28,7 @@ public class SocketServer2Spring extends SocketServer implements CommandLineRunn
 
     @Override
     public void run(String... args) throws Exception {
-        socketServer.socketioInit();
+        socketServer.start();
     }
 
     @Override
