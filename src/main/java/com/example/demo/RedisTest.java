@@ -11,13 +11,13 @@ public class RedisTest {
 
     public static void main(String[] args) {
 
-        String host = "redis.aps.com";
+        String host = "";
         int port = 31754;
         String password = "123456";
 
 //        RedisSentinelConfiguration sentinelConfig = new RedisSentinelConfiguration();
 //        sentinelConfig.setMaster("mymaster");
-//        RedisNode redisNode = new RedisNode("172.20.51.5", 31754);
+//        RedisNode redisNode = new RedisNode("xx.xx.xx.xx", 31754);
 //        List<RedisNode> sentinels = new LinkedList<>();
 //        sentinels.add(redisNode);
 //        sentinelConfig.setSentinels(sentinels);
