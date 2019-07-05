@@ -8,6 +8,8 @@ FROM java
 # ENV PATH=$JAVA_HOME/bin:$PATH
 # ENV CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 
+mvn clean package
+
 # 添加springboot项目到镜像中的home目录，并重命名为app.jar
 ADD demo-0.0.1-SNAPSHOT.jar ~/app.jar
 
