@@ -8,10 +8,8 @@ FROM java
 # ENV PATH=$JAVA_HOME/bin:$PATH
 # ENV CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 
-mvn clean package
-
 # 添加springboot项目到镜像中的home目录，并重命名为app.jar
-ADD demo-0.0.1-SNAPSHOT.jar ~/app.jar
+ADD tartget/demo-0.0.1-SNAPSHOT.jar ~/app.jar
 
 # 容器启动后执行的命令
 ENTRYPOINT ["java","-jar","~/app.jar", "--server.port=9090"]
